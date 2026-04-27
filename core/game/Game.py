@@ -24,6 +24,10 @@ class Deck:
             for rank in ranks:
                 self.array.append(rank+suit)
         random.shuffle(self.array)
+    
+    def drawCard(self, cardTuple):
+        string = cardTuple[0]+cardTuple[1]
+        self.array.pop(self.array.index(string))
 
 class Game:
     
@@ -157,8 +161,7 @@ class Game:
                     suitCounts.append((card, len(suitList)))
 
                     if len(suitList) >= 5:
-                        handResult = ["flush", suitList, [c for c in combination if c not in suitList][-1], holeHands.index(hand)]
-
+                        handResult = ["flush", suitList, None, holeHands.index(hand)]
                         straightList = self.getStraight(suitList)
                         if straightList != []:
                             ranks = sorted([getCardRankAsInt(c[0]) for c in straightList])
