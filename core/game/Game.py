@@ -212,5 +212,20 @@ class Game:
             self.playersResult.append(self.handScore(playerHand))
 
     def getIndexResult(self, index):
-        return self.playerHands[index]
+
+        higher = self.playersResult[index]==max(self.playersResult)
+        if not higher:
+            return 0
+        
+        indexes = []
+        start_pos = 0
+        while True:
+            try:
+                idx = self.playersResult.index(self.playersResult[index], start_pos)
+                indexes.append(idx)
+                start_pos = idx + 1
+            except ValueError:
+                break
+        
+        return 2 if len(indexes)==1 else 1
     
