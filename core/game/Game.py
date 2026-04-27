@@ -20,4 +20,12 @@ class Deck:
         for suit in suits:
             for rank in ranks:
                 self.array.append(rank+suit)
+    # Return a card string as a tuple (first element being rank, second suit)
+    def getCardAsTuple(self, string):
+        return (
+            (string[0]),(string[1])
+        )
+
+deck = Deck()
+print(deck.getCardAsTuple(deck.drawRandomCard()))
 
