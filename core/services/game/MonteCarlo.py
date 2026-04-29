@@ -1,4 +1,4 @@
-import Game as g
+import core.services.game.Game as g
 
 class Simulation:
     def __init__(self, holeCards, communityCards):
@@ -54,8 +54,3 @@ class Simulation:
             "tie":  self.ties / total,
             "loss": self.loss / total
         }
-sim = Simulation(
-    holeCards=[[('2','s'), ('7','c')], None], 
-    communityCards=[None, None, None, None, None]
-)
-print(sim.getOdds(iterations=1000))
