@@ -1,6 +1,6 @@
 import fastapi
 import pydantic
-from models.gameState import GameState, Hand, Card, CommunityCards
+from models.gameState import GameState, Hand, Card, CommunityCards, HandOddsResult
 from services.game.MonteCarlo import Simulation
 def decodeCard(card: Card):
     if card is None:
@@ -40,4 +40,4 @@ async def simulateGame(gameState: GameState):
 
     simulation = Simulation(simulationHands, simulationCommunityCards)
     result = simulation.getOdds()
-    print(result)
+    return HandOddsResult(win=result["win"],tie=result["tie"],loss= result["loss"])

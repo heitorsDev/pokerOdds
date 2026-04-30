@@ -61,3 +61,5 @@ class Simulation:
             "tie":  self.ties / total,
             "loss": self.loss / total
         }
+   ## def getAverageEvaluation():
+
