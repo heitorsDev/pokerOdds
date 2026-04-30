@@ -22,6 +22,6 @@ class HandsEvaluationResult(BaseModel):
      evaluations: list[int]
 
 class HandOddsResult(BaseModel):
-    win: int
-    tie: int
-    loss: int
+    win: float
+    tie: float
+    loss: float
