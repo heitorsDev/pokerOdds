@@ -1,4 +1,5 @@
 import random 
+from models.gameState import Card, CommunityCards, GameState, Hand
 
 def getCardRankAsInt(rank):
     return ['2','3','4','5','6','7','8','9','T','J','Q','K','A'].index(rank)
@@ -28,6 +29,8 @@ class Deck:
     def drawCard(self, cardTuple):
         string = cardTuple[0]+cardTuple[1]
         self.array.pop(self.array.index(string))
+    
+    
 
 class Game:
     
@@ -231,4 +234,7 @@ class Game:
                 break
         
         return 2 if len(indexes)==1 else 1
+    
+    def getHandEvaluationArray(self):
+        return self.playersResult
     

@@ -1,4 +1,4 @@
-import core.services.game.Game as g
+import services.game.Game as g
 
 class Simulation:
     def __init__(self, holeCards, communityCards):
@@ -19,17 +19,24 @@ class Simulation:
         for hand in randomizedHoleCards:
             if hand is not None:
                 for card in hand:
-                    deck.drawCard(card)
+                    if card is not None:
+                        deck.drawCard(card)
 
         for card in randomizedCommunityCards:
             if card is not None:
                 deck.drawCard(card)
 
         for i in range(len(randomizedHoleCards)):
-            if randomizedHoleCards[i] is None:
+            hand = randomizedHoleCards[i]
+            if hand is None:
                 c1 = g.getCardAsTuple(deck.drawRandomCard())
                 c2 = g.getCardAsTuple(deck.drawRandomCard())
                 randomizedHoleCards[i] = [c1, c2]
+            else:
+                if hand[0] is None:
+                    randomizedHoleCards[i][0] = g.getCardAsTuple(deck.drawRandomCard())
+                if hand[1] is None:
+                    randomizedHoleCards[i][1] = g.getCardAsTuple(deck.drawRandomCard())
 
         for i in range(len(randomizedCommunityCards)):
             if randomizedCommunityCards[i] is None:
